@@ -45,6 +45,13 @@
 			<artifactId>commons-codec</artifactId>
 		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
+		<dependency>
+		    <groupId>com.mysql</groupId>
+		    <artifactId>mysql-connector-j</artifactId>
+		    </dependency>
+
+		
 	</dependencies>
 	<!-- auto-generated pom.xml file, which is not compatible with the latest Java versions -->
 	

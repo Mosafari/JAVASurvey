@@ -1,7 +1,14 @@
 package com.webapp.Survey;
 
 
+import java.sql.*;
+
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.MediaType;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +21,7 @@ public class Addpage {
 	static final public String Hpage = "/";
 	static final public String AddPage = "/add";
 	static final public String ViewPage = "/comments";
+	static final public String DB = "/addcomment";
     // One syntax to implement a
     // GET method
 	// home page 
@@ -98,10 +106,10 @@ public class Addpage {
         		+"							<div class=\"field\">\r\n"
         		+ "          					<strong>Topic</strong>\r\n"
         		+ "    						</div>"
-            	+"							<div><form>\r\n"
+            	+"							<div><form method=\"POST\" action=\""+DB+"\">\r\n"
         		+"								<div class=\"column\"><input class=\"input is-large\" type=\"text\" name=\"name\" placeholder=\"Enter Your Name :\" autofocus=\"\" ></div>"
             	+ "        						<textarea\r\n"
-            	+ "          						placeholder=\"Enter Your Comment :\"\r\n"
+            	+ "          						placeholder=\"Enter Your Comment :\" type=\"text\" name=\"comment\"\r\n"
             	+"									class=\"input is-large\""
             	+ "        							></textarea>\r\n"
             	+ "        						<button class=\"button is-block is-info is-large is-fullwidth\">Submit</button>\r\n"
@@ -118,6 +126,28 @@ public class Addpage {
     return str;
         }
     
+ // Add comment to mysql DB
+    @RequestMapping(
+        method =  { RequestMethod.POST },
+        value = { DB },
+        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE
+    )
+    public void Addtodb(HttpServletResponse httpServletResponse,@RequestBody MultiValueMap<String, String> formData) throws InterruptedException 
+    	{
+//    	System.out.println(formData.getFirst("name"));
+    	try{   
+    		Connection con=DriverManager.getConnection(  
+    		"jdbc:mysql://localhost:3306/javasql","root","test");  
+    		//here javasql is database name, root is username and password is test  
+    		Statement stmt=con.createStatement();  
+    		stmt.executeUpdate("INSERT INTO Comments (comment, Name)\r\n"
+    				+ "VALUES ("+"\""+formData.getFirst("comment")+"\""+","+"\""+formData.getFirst("name")+"\""+");");  
+
+    		con.close();
+    		httpServletResponse.setHeader("Location", ViewPage);
+    	    httpServletResponse.setStatus(302);
+    		}catch(Exception e){ System.out.println(e);}  
+    	}  
     
     // comments page to view all comments
     @RequestMapping(
