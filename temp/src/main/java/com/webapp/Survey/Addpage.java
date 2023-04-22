@@ -71,7 +71,48 @@ public class Addpage {
     )
     public String addpage(String args[]) throws InterruptedException 
     	{
-            return "Add Page";
+    	String str
+        = "<!DOCTYPE html>\r\n"
+        		+ "<html>\r\n"
+        		+ "\r\n"
+        		+ "<head>\r\n"
+        		+ "    <meta charset=\"utf-8\">\r\n"
+        		+ "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\r\n"
+        		+ "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\r\n"
+        		+ "    <title>Home</title>\r\n"
+        		+ "    <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css\" />\r\n"
+        		+ "    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"></script>\r\n"
+        		+ "    <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js\"></script>\r\n"
+        		+ "    <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN\" crossorigin=\"anonymous\"></script>\r\n"
+        		+ "</head>\r\n"
+        		+ "\r\n"
+        		+ "<body>\r\n"
+        		+ "    <section class=\"hero is-primary is-fullheight\">\r\n"
+        		+ "\r\n"
+        		+ "        <div class=\"hero-head\">\r\n"
+        		+ "        </div>\r\n"
+        		+ "\r\n"
+        		+ "        <div class=\"hero-body\">\r\n"
+        		+ "            <div class=\"container has-text-centered\" >\r\n"
+        		+ "					<div class=\"column is-4 is-offset-4\" >"				
+        		+ "            			<h1>Topic</h1>"
+        		+"						<div class=\"box\">"
+            	+"							<div><form>\r\n"
+            	+ "        						<textarea\r\n"
+            	+ "          						placeholder=\"Enter Your Comment :\"\r\n"
+            	+ "        							></textarea>\r\n"
+            	+ "        						<button class=\"button is-block is-info is-large is-fullwidth\">Submit</button>\r\n"
+            	+ "      					</form></div>"
+        		+"						</div>"
+        		+ "</div>"
+        		+ "            </div>\r\n"
+        		+ "        </div>\r\n"
+        		+ "    </section>\r\n"
+        		+ "    <div id=\"SCRtepm\"></div>\r\n"
+        		+ "</body>\r\n"
+        		+ "\r\n"
+        		+ "</html>";
+    return str;
         }
     
     
