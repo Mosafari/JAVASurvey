@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.12-SNAPSHOT</version>
+		<version>2.7.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.webapp</groupId>
@@ -16,7 +16,7 @@
 	<properties>
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.release>13</maven.compiler.release>
+		<maven.compiler.release>11</maven.compiler.release>
 
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
@@ -55,7 +55,7 @@
 	</dependencies>
 	<!-- auto-generated pom.xml file, which is not compatible with the latest Java versions -->
 	
-	<build>
+	<!--<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
@@ -65,6 +65,32 @@
 				</plugin>
 			</plugins>
 		</pluginManagement>
+	</build>-->
+	<build>
+		<plugins>
+			<plugin>
+				<!-- Build an executable JAR -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<!-- here we specify that we want to use the main method within the App class -->
+							<mainClass>com.webapp.Survey</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-shade-plugin</artifactId>
+				</plugin>
+		</plugins>
 	</build>
 
 	
